@@ -1,6 +1,6 @@
 import numpy as np
-
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 
 # 1. Creación y Manipulación de Arrays
 A = np.arange(1, 16).reshape(3, 5)
@@ -75,10 +75,7 @@ plt.grid(True)
 plt.show()
 
 # 10. Manipulación de Imágenes con Matplotlib
-import matplotlib.image as mpimg
-
-# Lee una imagen (asegúrate de tener una imagen en el mismo directorio o proporciona la ruta correcta)
-img = mpimg.imread('ruta/a/tu/imagen.jpg')
+img = mpimg.imread('imagen.jpg')
 img_gray = np.dot(img[..., :3], [0.2989, 0.5870, 0.1140])
 
 plt.figure()

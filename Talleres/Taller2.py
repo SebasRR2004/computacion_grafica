@@ -2,6 +2,7 @@ import random
 import string
 import re
 
+# 1. Funciones de operaciones basicas
 def suma(a, b):
     return a + b
 
@@ -14,21 +15,25 @@ def multiplicacion(a, b):
 def division(a, b):
     return a / b if b != 0 else "Error: División por cero"
 
+# 1.1 Calculadora
 def calculadora():
     a = float(input("Ingrese el primer número: "))
     b = float(input("Ingrese el segundo número: "))
     operacion = input("Ingrese la operación (+, -, *, /): ")
-    
+
     operaciones = {'+': suma, '-': resta, '*': multiplicacion, '/': division}
     resultado = operaciones.get(operacion, lambda x, y: "Operación no válida")(a, b)
     print("Resultado:", resultado)
 
+# 2. Filtro de listas
 def filtrar_pares(lista):
     return [num for num in lista if num % 2 == 0]
 
+# 3. Transformación de Listas con Map y Lambda
 def convertir_temperaturas(lista):
     return list(map(lambda c: (c * 9/5) + 32, lista))
 
+# 4. Sistema de Calificaciones
 def calificaciones_a_letras(lista):
     def convertir(nota):
         if nota >= 90: return 'A'
@@ -38,6 +43,7 @@ def calificaciones_a_letras(lista):
         else: return 'F'
     return list(map(convertir, lista))
 
+# 5. Conteo de Palabras
 def contar_palabras(texto):
     palabras = re.findall(r'\b\w+\b', texto.lower())
     conteo = {}
@@ -45,9 +51,11 @@ def contar_palabras(texto):
         conteo[palabra] = conteo.get(palabra, 0) + 1
     return conteo
 
+# 6. Búsqueda de Elementos
 def buscar_elemento(lista, elemento):
     return next((i for i, val in enumerate(lista) if val == elemento), -1)
 
+# 7. Validación de Paréntesis
 def validar_parentesis(secuencia):
     balance = 0
     for char in secuencia:
@@ -56,13 +64,16 @@ def validar_parentesis(secuencia):
         if balance < 0: return False
     return balance == 0
 
+# 8. Ordenamiento personalizado de tuplas
 def ordenar_tuplas(lista):
     return sorted(lista, key=lambda x: (x[1], x[0]))
 
-def generar_contrasena(longitud=8):
+# 9. Generador de Contraseñas
+def generar_contrasena(longitud = 8):
     caracteres = string.ascii_letters + string.digits + string.punctuation
     return ''.join(random.choice(caracteres) for _ in range(longitud))
 
+# 10. Gestión de Agenda Telefónica
 def agenda_telefonica():
     agenda = {}
     while True:
@@ -86,6 +97,7 @@ def agenda_telefonica():
         else:
             print("Opción no válida")
 
+# Función que muestra un menú que integrará todas las funciones anteriores.
 def menu():
     while True:
         print("\nMenú de Opciones:")
@@ -93,7 +105,7 @@ def menu():
         print("6. Buscar elemento en lista\n7. Validar paréntesis\n8. Ordenar lista de tuplas\n9. Generar contraseña\n10. Gestión de agenda telefónica\n11. Salir")
 
         opcion = input("Elija una opción: ")
-        
+
         if opcion == '1':
             calculadora()
         elif opcion == '2':
